@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: underwriting-backend-loadbalancer-v5
+spec:
+  selector:
+    app: underwriting-backend-v5
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

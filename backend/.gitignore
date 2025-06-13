@@ -1,0 +1,10 @@
+pdf_documents_*
+temp
+bin/
+include/
+lib/
+pyvenv.cfg
+parser_tmp/
+**/*/__pycache__/
+__pycache__/
+lib64

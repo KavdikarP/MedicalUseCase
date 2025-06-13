@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: underwriting-backend-v5
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: underwriting-backend-v5
+  template:
+    metadata:
+      labels:
+        app: underwriting-backend-v5
+      annotations: 
+        iam.gke.io/gcp-service-account: underwriting-gke@vital-octagon-19612.iam.gserviceaccount.com
+    spec:
+      containers:
+      - name: underwriting-backend-v7
+        image: gcr.io/vital-octagon-19612/prudential-uw-backend-image-v7
+        resources:
+          limits:
+            memory: "2Gi"
+            cpu: "1" 
+            ephemeral-storage: "1Gi"
+        env:
+        - name: PORT
+          value: "8080"

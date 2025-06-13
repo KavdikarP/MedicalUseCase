@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app
+spec:
+  replicas: 1  # You can adjust the number of replicas based on your needs
+  selector:
+    matchLabels:
+      app: frontend-app
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      containers:
+      - name: frontend-container
+        image: gcr.io/vital-octagon-19612/frontend-app  # Placeholder for the image, will be set via script
+        ports:
+        - containerPort: 3000  # Adjust if your app serves on a different port
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "200Mi"
+          requests:
+            cpu: "250m"
+            memory: "100Mi"
+        env:
+        - name: NODE_ENV
+          value: "production"
